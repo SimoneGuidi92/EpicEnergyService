@@ -1,6 +1,6 @@
 package it.be.energy.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +30,7 @@ public class Provincia {
 	private String regione;
 	
 	@OneToMany(mappedBy = "provincia")
-	private Set<Comune> comuni;
+	private List<Comune> comuni;
 
 	
 	public Provincia(String sigla, String nome, String regione) {
