@@ -27,8 +27,8 @@ public class FatturaService {
 		return fatturaRepo.findAll(pageable);
 	}
 	
-	public Fattura findById(Long numeroFattura) {
-		Optional<Fattura> findById = fatturaRepo.findById(numeroFattura);
+	public Fattura findById(Long id) {
+		Optional<Fattura> findById = fatturaRepo.findById(id);
 		if(findById.isPresent()) {
 			return findById.get();
 		}
@@ -41,20 +41,21 @@ public class FatturaService {
 		return fatturaRepo.save(fattura);
 	}
 	
-	public void delete(Long numeroFattura) {
-		Optional<Fattura> find = fatturaRepo.findById(numeroFattura);
+	public void delete(Long id) {
+		Optional<Fattura> find = fatturaRepo.findById(id);
 		if(find.isPresent()) {
-			fatturaRepo.deleteById(numeroFattura);
+			fatturaRepo.deleteById(id);
 		}
 		else {
 			throw new FatturaException("Fattura non trovata");
 		}
 	}
 	
-	public Fattura update(Long numeroFattura, Fattura fattura) {
-		Optional<Fattura> findFattura = fatturaRepo.findById(numeroFattura);
+	public Fattura update(Long id, Fattura fattura) {
+		Optional<Fattura> findFattura = fatturaRepo.findById(id);
 		if(findFattura.isPresent()) {
 			Fattura fatturaUpdate = findFattura.get();
+			fatturaUpdate.setNumeroFattura(fattura.getNumeroFattura());
 			fatturaUpdate.setAnno(fattura.getAnno());
 			fatturaUpdate.setCliente(fattura.getCliente());
 			fatturaUpdate.setData(fattura.getData());
