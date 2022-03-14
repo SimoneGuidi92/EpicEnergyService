@@ -2,7 +2,6 @@ package it.be.energy.controller;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

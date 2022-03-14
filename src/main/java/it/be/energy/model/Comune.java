@@ -32,7 +32,6 @@ public class Comune {
 	private Provincia provincia;
 	
 	@OneToMany(mappedBy = "comune")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	private List<Indirizzo> indirizzi;
 
 	public Comune(String nome, Provincia provincia) {
