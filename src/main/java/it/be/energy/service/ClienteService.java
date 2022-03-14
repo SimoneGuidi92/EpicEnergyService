@@ -19,15 +19,22 @@ public class ClienteService {
 	@Autowired
 	ClienteRepository clienteRepo;
 	
-	public Cliente saveCliente(Cliente cliente) {
+	public Cliente save(Cliente cliente) {
 		return clienteRepo.save(cliente);
 	}
 	
-	public void deleteCliente(Long id) {
-		clienteRepo.deleteById(id);
+	public void delete(Long id) {
+		Optional<Cliente> find = clienteRepo.findById(id);
+		if(find.isPresent()) {
+			clienteRepo.deleteById(id);
+		}
+		else {
+			throw new ClienteException("Cliente non trovato");
+		}
+		
 	}
 	
-	public Cliente updateCliente(Cliente cliente, Long id) {
+	public Cliente update(Long id, Cliente cliente) {
 		Optional<Cliente> clienteResult = clienteRepo.findById(id);
 		if(clienteResult.isPresent()) {
 			Cliente clienteUpdate = clienteResult.get();
@@ -58,10 +65,10 @@ public class ClienteService {
 		return clienteRepo.findAll(pageable);
 	}
 	
-	public Cliente findById(Long id) {
+	public Optional<Cliente> findById(Long id) {
 		Optional<Cliente> find = clienteRepo.findById(id);
 		if(find.isPresent()) {
-			return find.get();
+			return find;
 		}
 		else {
 			throw new ClienteException("Non è stato trovato nessun cliente con questo id");
@@ -163,5 +170,6 @@ public class ClienteService {
 	public Page<Cliente> findByRagioneSocialeLike(String ragioneSociale, Pageable pageable) {
 		return clienteRepo.findByRagioneSocialeLike(ragioneSociale, pageable);
 	}
+	
 		
 }
