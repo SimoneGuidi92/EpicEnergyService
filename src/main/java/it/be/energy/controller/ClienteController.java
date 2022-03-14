@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -254,7 +255,7 @@ public class ClienteController {
 	@GetMapping("/clientedatainserimentomaggiore/{data}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova i clienti con data inserimento maggiore o uguale a quella inserita")
-	public ResponseEntity<Page<Cliente>> findByDataInserimentoGreaterThanEqual(@PathVariable LocalDate data, Pageable pageable) {
+	public ResponseEntity<Page<Cliente>> findByDataInserimentoGreaterThanEqual(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data, Pageable pageable) {
 		log.info("*** filtro cliente per data inserimento maggiore o uguale di ***");
 		Page<Cliente> find = clienteService.findByDataInserimentoGreaterThanEqual(data, pageable);
 		if(find.hasContent()) {
@@ -273,7 +274,7 @@ public class ClienteController {
 	@GetMapping("/clientedatainserimentominore/{data}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova i clienti con data inserimento minore o uguale a quella inserita")
-	public ResponseEntity<Page<Cliente>> findByDataInserimentoLessThanEqual(@PathVariable LocalDate data, Pageable pageable) {
+	public ResponseEntity<Page<Cliente>> findByDataInserimentoLessThanEqual(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data, Pageable pageable) {
 		log.info("*** filtro cliente per data inserimento minore o uguale di ***");
 		Page<Cliente> find = clienteService.findByDataInserimentoLessThanEqual(data, pageable);
 		if(find.hasContent()) {
@@ -292,7 +293,7 @@ public class ClienteController {
 	@GetMapping("/clientedatainserimentotra/{data1}/{data2}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova i clienti con data inserimento compresa tra quelle inserite")
-	public ResponseEntity<Page<Cliente>> findByDataInserimentoBetween(LocalDate data1, LocalDate data2, Pageable pageable) {
+	public ResponseEntity<Page<Cliente>> findByDataInserimentoBetween(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data2, Pageable pageable) {
 		log.info("*** filtro cliente per data inserimento compresa tra ***");
 		Page<Cliente> find = clienteService.findByDataInserimentoBetween(data1, data2, pageable);
 		if(find.hasContent()) {
@@ -311,7 +312,7 @@ public class ClienteController {
 	@GetMapping("/clientedataultimocontattomaggiore/{data}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova i clienti con data ultimo contatto maggiore o uguale a quella inserita")
-	public ResponseEntity<Page<Cliente>> findByDataUltimoContattoGreaterThanEqual(LocalDate data, Pageable pageable) {
+	public ResponseEntity<Page<Cliente>> findByDataUltimoContattoGreaterThanEqual(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data, Pageable pageable) {
 		log.info("*** filtro cliente per data inserimento maggiore o uguale di ***");
 		Page<Cliente> find = clienteService.findByDataUltimoContattoGreaterThanEqual(data, pageable);
 		if(find.hasContent()) {
@@ -330,7 +331,7 @@ public class ClienteController {
 	@GetMapping("/clientedataultimocontattominore/{data}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova i clienti con data ultimo contatto minore o uguale a quella inserita")
-	public ResponseEntity<Page<Cliente>> findByDataUltimoContattoLessThanEqual(LocalDate data, Pageable pageable) {
+	public ResponseEntity<Page<Cliente>> findByDataUltimoContattoLessThanEqual(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data, Pageable pageable) {
 		log.info("*** filtro cliente per data inserimento minore o uguale di ***");
 		Page<Cliente> find = clienteService.findByDataUltimoContattoLessThanEqual(data, pageable);
 		if(find.hasContent()) {
@@ -349,7 +350,7 @@ public class ClienteController {
 	@GetMapping("/clientedataultimocontattotra/{data1}/{data2}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova i clienti con data ultimo contatto compresa tra quelle inserite")
-	public ResponseEntity<Page<Cliente>> findByDataUltimoContattoBetween(LocalDate data1, LocalDate data2, Pageable pageable) {
+	public ResponseEntity<Page<Cliente>> findByDataUltimoContattoBetween(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data2, Pageable pageable) {
 		log.info("*** filtro cliente per data ultimo contatto compresa tra ***");
 		Page<Cliente> find = clienteService.findByDataUltimoContattoBetween(data1, data2, pageable);
 		if(find.hasContent()) {
@@ -368,7 +369,7 @@ public class ClienteController {
 	@GetMapping("/clienteragionesocialefilter/{ragioneSociale}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova i clienti tramite porzione del nome della ragione sociale")
-	public ResponseEntity<Page<Cliente>> findByRagioneSocialeLike(String ragioneSociale, Pageable pageable) {
+	public ResponseEntity<Page<Cliente>> findByRagioneSocialeLike(@PathVariable String ragioneSociale, Pageable pageable) {
 		log.info("*** filtro cliente per porzione del nome della ragione sociale ***");
 		Page<Cliente> find = clienteService.findByRagioneSocialeLike(ragioneSociale, pageable);
 		if(find.hasContent()) {

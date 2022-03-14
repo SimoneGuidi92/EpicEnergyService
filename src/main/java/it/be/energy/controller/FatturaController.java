@@ -1,10 +1,13 @@
 package it.be.energy.controller;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import it.be.energy.model.Fattura;
+import it.be.energy.model.StatoFattura;
 import it.be.energy.service.FatturaService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -79,10 +83,81 @@ public class FatturaController {
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca una fattura tramite il suo id")
 	public ResponseEntity<Fattura> findById(@PathVariable Long id) {
-		log.info("*** INIZIO findById fattura ***");
-		Optional<Fattura> findById = fatturaService.findById(id);
+		log.info("*** findById fattura ***");
+		Fattura findById = fatturaService.findById(id);
 		log.info("*** FINE findById fattura ***");
-		return new ResponseEntity<>(findById.get(), HttpStatus.OK);
+		return new ResponseEntity<>(findById, HttpStatus.OK);
+		
+	}
+	
+	@GetMapping("/fatturaragionesociale/{nome}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	@Operation(summary = "Trova le fatture con porzione del nome inserito")
+	public ResponseEntity<Page<Fattura>> findByClienteRagioneSocialeLike(Pageable pageable, @PathVariable String nome) {
+		log.info("*** cerca fattura tramite ragione sociale cliente ***");
+		Page<Fattura> find = fatturaService.findByClienteRagioneSocialeLike(pageable, nome);
+		if(find.hasContent()) {
+			return new ResponseEntity<>(find, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	@GetMapping("/statofattura/{statoFattura}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	@Operation(summary = "Trova le fatture tramite lo stato fattura inserito")
+	public ResponseEntity<Page<Fattura>> findByStatoFattura(Pageable pageable, @PathVariable StatoFattura statoFattura) {
+		log.info("*** cerca fattura tramite stato fattura ***");
+		Page<Fattura> find = fatturaService.findByStatoFattura(pageable, statoFattura);
+		if(find.hasContent()) {
+			return new ResponseEntity<>(find, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	@GetMapping("/fatturadata/{data}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	@Operation(summary = "Trova le fatture tramite la data inserita")
+	public ResponseEntity<Page<Fattura>> findByData(Pageable pageable, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date data) {
+		log.info("*** cerca fattura tramite stato fattura ***");
+		Page<Fattura> find = fatturaService.findByData(pageable, data);
+		if(find.hasContent()) {
+			return new ResponseEntity<>(find, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	@GetMapping("/fatturaanno/{anno}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	@Operation(summary = "Trova le fatture tramite l'anno inserito")
+	public ResponseEntity<Page<Fattura>> findByAnno(Pageable pageable, @PathVariable Integer anno) {
+		log.info("*** cerca fattura tramite stato fattura ***");
+		Page<Fattura> find = fatturaService.findByAnno(pageable, anno);
+		if(find.hasContent()) {
+			return new ResponseEntity<>(find, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	@GetMapping("/fatturaanno/{min}/{max}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	@Operation(summary = "Trova le fatture range di importi")
+	public ResponseEntity<Page<Fattura>> findByImportoBetween(Pageable pageable, @PathVariable BigDecimal min, @PathVariable BigDecimal max) {
+		log.info("*** cerca fattura tramite range di importi ***");
+		Page<Fattura> find = fatturaService.findByImportoBetween(pageable, min, max);
+		if(find.hasContent()) {
+			return new ResponseEntity<>(find, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		}
 	}
 	
 }
