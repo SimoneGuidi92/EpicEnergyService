@@ -40,7 +40,7 @@ public class ComuneController {
 		}
 	}
 	
-	@GetMapping("/comune/{id}")
+	@GetMapping("/comuneid/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca un comune tramite il suo id")
 	public ResponseEntity<Comune> findById(@PathVariable Long id) {
@@ -48,6 +48,17 @@ public class ComuneController {
 		Comune findById = comuneService.findById(id);
 		log.info("*** FINE findById comune ***");
 		return new ResponseEntity<>(findById, HttpStatus.OK);
+		
+	}
+	
+	@GetMapping("/comunenome/{id}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	@Operation(summary = "Cerca un comune tramite il suo nome")
+	public ResponseEntity<Page<Comune>> findByNomeContaining(String nome, Pageable pageable) {
+		log.info("*** findByNome comune ***");
+		Page<Comune> findByNome = comuneService.findByNomeContaining(nome, pageable);
+		log.info("*** FINE findByNome comune ***");
+		return new ResponseEntity<>(findByNome, HttpStatus.OK);
 		
 	}
 	

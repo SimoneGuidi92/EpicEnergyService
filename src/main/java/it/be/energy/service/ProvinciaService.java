@@ -31,4 +31,14 @@ public class ProvinciaService {
 		}
 	}
 	
+	public Page<Provincia> findByNomeContaining(String nome, Pageable pageable) {
+		Page<Provincia> find = provinciaRepo.findByNomeContaining(nome, pageable);
+		if(find.hasContent()) {
+			return find;
+		}
+		else {
+			throw new ProvinciaException("Comune non trovato");
+		}
+	}
+	
 }

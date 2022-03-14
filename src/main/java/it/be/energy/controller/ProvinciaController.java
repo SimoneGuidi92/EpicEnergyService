@@ -40,7 +40,7 @@ public class ProvinciaController {
 		}
 	}
 	
-	@GetMapping("/provincia/{id}")
+	@GetMapping("/provinciaid/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca una provincia tramite il suo id")
 	public ResponseEntity<Provincia> findById(@PathVariable Long id) {
@@ -48,6 +48,17 @@ public class ProvinciaController {
 		Provincia findById = provinciaService.findById(id);
 		log.info("*** FINE findById provincia ***");
 		return new ResponseEntity<>(findById, HttpStatus.OK);
+		
+	}
+	
+	@GetMapping("/provincianome/{id}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	@Operation(summary = "Cerca una provincia tramite il suo nome")
+	public ResponseEntity<Page<Provincia>> findByNomeContaining(String nome, Pageable pageable) {
+		log.info("*** findByNome provincia ***");
+		Page<Provincia> findByNome = provinciaService.findByNomeContaining(nome, pageable);
+		log.info("*** FINE findByNome comune ***");
+		return new ResponseEntity<>(findByNome, HttpStatus.OK);
 		
 	}
 	

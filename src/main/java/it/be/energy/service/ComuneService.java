@@ -28,8 +28,19 @@ public class ComuneService {
 			return find.get();
 		}
 		else {
-			throw new ComuneException("Comune non trovata");
+			throw new ComuneException("Comune non trovato");
 		}
+	}
+	
+	public Page<Comune> findByNomeContaining(String nome, Pageable pageable) {
+		Page<Comune> find = comuneRepo.findByNomeContaining(nome, pageable);
+		if(find.hasContent()) {
+			return find;
+		}
+		else {
+			throw new ComuneException("Comune non trovato");
+		}
+		
 	}
 	
 }
