@@ -11,6 +11,8 @@ public class RequestRegisterUser {
 	private String userName;
 	private String password;
 	private String email;
+	private String nome;
+	private String cognome;
 	private Set<String> roles = new HashSet<>();
 	
 }

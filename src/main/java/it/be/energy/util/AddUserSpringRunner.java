@@ -32,6 +32,8 @@ public class AddUserSpringRunner implements CommandLineRunner {
 		User user = new User();
 		Set<Role> roles = new HashSet<>(); 
 		roles.add(role);
+		user.setNome("Admin");
+		user.setCognome("Admin");
 		user.setUserName("admin");
 		user.setPassword(bCrypt.encode("admin"));
 		user.setEmail("admin@domain.com");
@@ -46,6 +48,8 @@ public class AddUserSpringRunner implements CommandLineRunner {
 		User user2 = new User();
 		Set<Role> roles2 = new HashSet<>(); 
 		roles2.add(role2);
+		user2.setNome("User");
+		user2.setCognome("User");
 		user2.setUserName("user");
 		user2.setPassword(bCrypt.encode("user"));
 		user2.setEmail("user@domain.com");
