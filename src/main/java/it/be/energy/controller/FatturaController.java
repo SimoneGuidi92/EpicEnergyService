@@ -17,71 +17,66 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.be.energy.model.Cliente;
-import it.be.energy.service.ClienteService;
+import it.be.energy.model.Fattura;
+import it.be.energy.service.FatturaService;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api")
 @Slf4j
-public class ClienteController {
-
+public class FatturaController {
+	
 	@Autowired
-	ClienteService clienteService;
-	
-	@PostMapping("/cliente")
+	FatturaService fatturaService;
+
+	@PostMapping("/fattura")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<Cliente> save(@RequestBody Cliente cliente) {
-		log.info("*** INIZIO save cliente ***");
-		Cliente c = clienteService.save(cliente);
-		log.info("*** FINE save cliente ***");
-		return new ResponseEntity<>(c, HttpStatus.CREATED);
+	public ResponseEntity<Fattura> save(@RequestBody Fattura fattura) {
+		log.info("*** INIZIO save fattura ***");
+		Fattura f = fatturaService.save(fattura);
+		log.info("*** FINE save fattura ***");
+		return new ResponseEntity<>(f, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/cliente/{id}")
+	@PutMapping("/fattura/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody Cliente cliente) {
-		log.info("*** INIZIO update cliente ***");
-		Cliente c = clienteService.update(id, cliente);
-		log.info("*** FINE update cliente ***");
-		return new ResponseEntity<>(c, HttpStatus.OK);
+	public ResponseEntity<Fattura> update(@PathVariable Long id, @RequestBody Fattura fattura) {
+		log.info("*** INIZIO update fattura ***");
+		Fattura f = fatturaService.update(id, fattura);
+		log.info("*** FINE update fattura ***");
+		return new ResponseEntity<>(f, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/cliente/{id}")
+	@DeleteMapping("/fattura/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
-		log.info("*** INIZIO delete cliente ***");
-		clienteService.delete(id);
-		log.info("*** FINE delete cliente ***");
-		return new ResponseEntity<>("Cliente cancellato correttamente", HttpStatus.OK);
+		log.info("*** INIZIO delete fattura ***");
+		fatturaService.delete(id);
+		log.info("*** FINE delete fattura ***");
+		return new ResponseEntity<>("Fattura cancellata correttamente", HttpStatus.OK);
 	}
 	
-	
-	@GetMapping("/clienti")
+	@GetMapping("/fatture")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	public ResponseEntity<Page<Cliente>> findAll(Pageable pageable) {
-		log.info("*** INIZIO findAll clienti ***");
-		Page<Cliente> findAll = clienteService.findAll(pageable);
+	public ResponseEntity<Page<Fattura>> findAll(Pageable pageable) {
+		log.info("*** INIZIO findAll fatture ***");
+		Page<Fattura> findAll = fatturaService.findAll(pageable);
 		if(findAll.hasContent()) {
 			return new ResponseEntity<>(findAll, HttpStatus.OK);
 		}
 		else {
-			log.info("*** Clienti non trovati ***");
+			log.info("*** Fatture non trovate ***");
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		}
 	}
 	
-	@GetMapping("/cliente/{id}")
+	@GetMapping("/fattura/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	public ResponseEntity<Cliente> findById(@PathVariable Long id) {
-		log.info("*** INIZIO findById cliente ***");
-		Optional<Cliente> findById = clienteService.findById(id);
-		log.info("*** FINE findById cliente ***");
+	public ResponseEntity<Fattura> findById(@PathVariable Long id) {
+		log.info("*** INIZIO findById fattura ***");
+		Optional<Fattura> findById = fatturaService.findById(id);
+		log.info("*** FINE findById fattura ***");
 		return new ResponseEntity<>(findById.get(), HttpStatus.OK);
 	}
-	
-	
-	
-	
 	
 }
