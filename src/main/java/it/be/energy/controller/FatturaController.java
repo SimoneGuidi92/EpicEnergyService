@@ -93,9 +93,9 @@ public class FatturaController {
 	@GetMapping("/fatturaragionesociale/{nome}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova le fatture con porzione del nome inserito")
-	public ResponseEntity<Page<Fattura>> findByClienteRagioneSocialeLike(Pageable pageable, @PathVariable String nome) {
+	public ResponseEntity<Page<Fattura>> findByClienteRagioneSocialeContaining(Pageable pageable, @PathVariable String nome) {
 		log.info("*** cerca fattura tramite ragione sociale cliente ***");
-		Page<Fattura> find = fatturaService.findByClienteRagioneSocialeLike(pageable, nome);
+		Page<Fattura> find = fatturaService.findByClienteRagioneSocialeContaining(pageable, nome);
 		if(find.hasContent()) {
 			return new ResponseEntity<>(find, HttpStatus.OK);
 		}

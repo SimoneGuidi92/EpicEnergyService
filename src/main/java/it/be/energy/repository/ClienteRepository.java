@@ -41,7 +41,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 	
 	public Page<Cliente> findByDataUltimoContattoBetween(LocalDate data1, LocalDate data2, Pageable pageable);
 	
-	public Page<Cliente> findByRagioneSocialeLike(String ragioneSociale, Pageable pageable);
+	public Page<Cliente> findByRagioneSocialeContaining(String ragioneSociale, Pageable pageable);
 	
 	
 }

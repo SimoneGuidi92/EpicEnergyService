@@ -369,9 +369,9 @@ public class ClienteController {
 	@GetMapping("/clienteragionesocialefilter/{ragioneSociale}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova i clienti tramite porzione del nome della ragione sociale")
-	public ResponseEntity<Page<Cliente>> findByRagioneSocialeLike(@PathVariable String ragioneSociale, Pageable pageable) {
+	public ResponseEntity<Page<Cliente>> findByRagioneSocialeContaining(@PathVariable String ragioneSociale, Pageable pageable) {
 		log.info("*** filtro cliente per porzione del nome della ragione sociale ***");
-		Page<Cliente> find = clienteService.findByRagioneSocialeLike(ragioneSociale, pageable);
+		Page<Cliente> find = clienteService.findByRagioneSocialeContaining(ragioneSociale, pageable);
 		if(find.hasContent()) {
 
 			return new ResponseEntity<>(find, HttpStatus.OK);

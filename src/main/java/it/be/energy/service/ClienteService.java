@@ -176,8 +176,8 @@ public class ClienteService {
 	/*
 	 * metodo che restituisce una lista di clienti con porzione del nome della ragione sociale inserita
 	 */
-	public Page<Cliente> findByRagioneSocialeLike(String ragioneSociale, Pageable pageable) {
-		return clienteRepo.findByRagioneSocialeLike(ragioneSociale, pageable);
+	public Page<Cliente> findByRagioneSocialeContaining(String ragioneSociale, Pageable pageable) {
+		return clienteRepo.findByRagioneSocialeContaining(ragioneSociale, pageable);
 	}
 	
 		
