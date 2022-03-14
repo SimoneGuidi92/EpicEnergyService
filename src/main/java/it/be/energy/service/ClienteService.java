@@ -76,27 +76,36 @@ public class ClienteService {
 	}
 	
 	/*
-	 * metodo che ritorna una lista page di tutte le ragioni sociali in ordine ascendente
+	 * metodo che ritorna una lista di tutti i clienti in ordine per ragione sociale ascendente
 	 */
 	public Page<Cliente> findAllOrderByRagioneSocialeAsc(Pageable pageable) {
 		return clienteRepo.findAllByOrderByRagioneSocialeAsc(pageable);
 	}
 	
 	/*
-	 * metodo che ritorna una lista page di tutto il fatturato annaule in ordine ascendente
+	 * metodo che ritorna una lista di tutti i clienti in ordine per fatturato annuale ascendente
 	 */
 	public Page<Cliente> findAllOrderByFatturatoAnnualeAsc(Pageable pageable) {
 		return clienteRepo.findAllByOrderByFatturatoAnnualeDesc(pageable);
 	}
 	
+	/*
+	 * metodo che ritorna una lista di tutti i clienti in ordine per data inserimento
+	 */
 	public Page<Cliente> findAllOrderByDataInserimento(Pageable pageable) {
 		return clienteRepo.findAllByOrderByDataInserimento(pageable);
 	}
 	
+	/*
+	 * metodo che ritorna una lista di tutti i clienti in ordine per data ultimo contatto
+	 */
 	public Page<Cliente> findAllOrderByDataUltimoContatto(Pageable pageable) {
 		return clienteRepo.findAllByOrderByDataUltimoContatto(pageable);
 	}
 	
+	/*
+	 * metodo che ritorna una lista di tutti i clienti in ordine per sede legale provincia e comune
+	 */
 	public Page<Cliente> findAllByOrderBySedeLegaleComuneProvincia(Pageable pageable) {
 		return clienteRepo.findAllByOrderBySedeLegaleComuneProvincia(pageable);
 	}
@@ -158,7 +167,7 @@ public class ClienteService {
 	}
 	
 	/*
-	 * metodo che restituisce una lista di clienti condata ultimo contatto compresa tra le due date inserite
+	 * metodo che restituisce una lista di clienti con data ultimo contatto compresa tra le due date inserite
 	 */
 	public Page<Cliente> findByDataUltimoContattoBetween(LocalDate data1, LocalDate data2, Pageable pageable) {
 		return clienteRepo.findByDataUltimoContattoBetween(data1, data2, pageable);

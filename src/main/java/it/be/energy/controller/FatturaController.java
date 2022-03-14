@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
 import it.be.energy.model.Fattura;
 import it.be.energy.service.FatturaService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,7 @@ public class FatturaController {
 
 	@PostMapping("/fattura")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@Operation(summary = "Permette di salvare una nuova fattura")
 	public ResponseEntity<Fattura> save(@RequestBody Fattura fattura) {
 		log.info("*** INIZIO save fattura ***");
 		Fattura f = fatturaService.save(fattura);
@@ -40,6 +42,7 @@ public class FatturaController {
 	
 	@PutMapping("/fattura/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@Operation(summary = "Permette di modificare una fattura")
 	public ResponseEntity<Fattura> update(@PathVariable Long id, @RequestBody Fattura fattura) {
 		log.info("*** INIZIO update fattura ***");
 		Fattura f = fatturaService.update(id, fattura);
@@ -49,6 +52,7 @@ public class FatturaController {
 	
 	@DeleteMapping("/fattura/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@Operation(summary = "Permette di cancellare una fattura tramite l'id")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("*** INIZIO delete fattura ***");
 		fatturaService.delete(id);
@@ -58,6 +62,7 @@ public class FatturaController {
 	
 	@GetMapping("/fatture")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	@Operation(summary = "Visualizza tutte le fatture")
 	public ResponseEntity<Page<Fattura>> findAll(Pageable pageable) {
 		log.info("*** INIZIO findAll fatture ***");
 		Page<Fattura> findAll = fatturaService.findAll(pageable);
@@ -72,6 +77,7 @@ public class FatturaController {
 	
 	@GetMapping("/fattura/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	@Operation(summary = "Cerca una fattura tramite il suo id")
 	public ResponseEntity<Fattura> findById(@PathVariable Long id) {
 		log.info("*** INIZIO findById fattura ***");
 		Optional<Fattura> findById = fatturaService.findById(id);
