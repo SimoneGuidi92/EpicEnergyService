@@ -23,10 +23,8 @@ import it.be.energy.repository.FatturaRepository;
 import it.be.energy.repository.IndirizzoRepository;
 import it.be.energy.repository.ProvinciaRepository;
 import it.be.energy.repository.StatoFatturaRepository;
-import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Slf4j
 public class DataLoadRunner implements CommandLineRunner {
 
 	@Autowired
@@ -71,19 +69,19 @@ public class DataLoadRunner implements CommandLineRunner {
 		indirizzoRepo.save(i2);
 		
 		Indirizzo i3 = new Indirizzo();
-		i.setCap("16100");
-		i.setCivico("22");
-		i.setComune(c);
-		i.setLocalita("Marina");
-		i.setVia("Via aurelia");
+		i3.setCap("16100");
+		i3.setCivico("22");
+		i3.setComune(c);
+		i3.setLocalita("Marina");
+		i3.setVia("Via aurelia");
 		indirizzoRepo.save(i3);
 		
 		Indirizzo i4 = new Indirizzo();
-		i2.setCap("16100");
-		i2.setCivico("27");
-		i2.setComune(c);
-		i2.setLocalita("Marina");
-		i2.setVia("Via del commercio");
+		i4.setCap("16100");
+		i4.setCivico("27");
+		i4.setComune(c);
+		i4.setLocalita("Marina");
+		i4.setVia("Via del commercio");
 		indirizzoRepo.save(i4);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

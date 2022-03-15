@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.model.Fattura;
-import it.be.energy.model.StatoFattura;
 import it.be.energy.service.FatturaService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -105,12 +104,12 @@ public class FatturaController {
 		}
 	}
 	
-	@GetMapping("/statofattura/{statoFattura}")
+	@GetMapping("/statofattura/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova le fatture tramite lo stato fattura inserito")
-	public ResponseEntity<Page<Fattura>> findByStatoFattura(Pageable pageable, @PathVariable StatoFattura statoFattura) {
+	@Operation(summary = "Trova le fatture tramite l'd dello stato fattura inserito")
+	public ResponseEntity<Page<Fattura>> findByStatoFattura(Pageable pageable, @PathVariable Long id) {
 		log.info("*** cerca fattura tramite stato fattura ***");
-		Page<Fattura> find = fatturaService.findByStatoFattura(pageable, statoFattura);
+		Page<Fattura> find = fatturaService.findByStatoFatturaId(pageable, id);
 		if(find.hasContent()) {
 			return new ResponseEntity<>(find, HttpStatus.OK);
 		}
@@ -147,9 +146,9 @@ public class FatturaController {
 		}
 	}
 	
-	@GetMapping("/fatturaanno/{min}/{max}")
+	@GetMapping("/fatturaimporto/{min}/{max}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova le fatture range di importi")
+	@Operation(summary = "Trova le fatture range di importo")
 	public ResponseEntity<Page<Fattura>> findByImportoBetween(Pageable pageable, @PathVariable BigDecimal min, @PathVariable BigDecimal max) {
 		log.info("*** cerca fattura tramite range di importi ***");
 		Page<Fattura> find = fatturaService.findByImportoBetween(pageable, min, max);

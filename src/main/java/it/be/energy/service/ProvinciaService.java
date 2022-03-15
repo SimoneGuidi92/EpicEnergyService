@@ -37,7 +37,7 @@ public class ProvinciaService {
 			return find;
 		}
 		else {
-			throw new ProvinciaException("Comune non trovato");
+			throw new ProvinciaException("Provincia non trovata");
 		}
 	}
 	

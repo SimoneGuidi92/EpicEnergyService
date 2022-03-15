@@ -1,5 +1,6 @@
 package it.be.energy.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.IndirizzoException;
+import it.be.energy.model.Cliente;
 import it.be.energy.model.Indirizzo;
+import it.be.energy.repository.ClienteRepository;
 import it.be.energy.repository.IndirizzoRepository;
 
 @Service
@@ -17,6 +20,9 @@ public class IndirizzoService {
 	@Autowired
 	IndirizzoRepository indirizzoRepo;
 	
+	@Autowired
+	ClienteRepository clienteRepo;
+	
 	
 	public Indirizzo save(Indirizzo indirizzo) {
 		return indirizzoRepo.save(indirizzo);
@@ -24,7 +30,18 @@ public class IndirizzoService {
 	
 	public void delete(Long id) {
 		Optional<Indirizzo> find = indirizzoRepo.findById(id);
+		List<Cliente> allClienti = clienteRepo.findAll();
+		for (Cliente cliente : allClienti) {
+			if(cliente.getSedeLegale().getId().equals(id)) {
+				cliente.setSedeLegale(null);
+			}
+			else if(cliente.getSedeOperativa().getId().equals(id)) {
+				cliente.setSedeOperativa(null);
+			}
+		}
 		if(find.isPresent()) {
+			Indirizzo delete = find.get();
+			delete.setComune(null);
 			indirizzoRepo.deleteById(id);
 		}
 		else {

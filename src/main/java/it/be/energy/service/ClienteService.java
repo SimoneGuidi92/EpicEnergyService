@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.ClienteException;
 import it.be.energy.model.Cliente;
+import it.be.energy.model.Fattura;
 import it.be.energy.repository.ClienteRepository;
 
 @Service
@@ -26,6 +27,13 @@ public class ClienteService {
 	public void delete(Long id) {
 		Optional<Cliente> find = clienteRepo.findById(id);
 		if(find.isPresent()) {
+			Cliente delete = find.get();
+			for(Fattura fattura : delete.getFatture()) {
+				fattura.setCliente(null);
+			}
+			delete.setFatture(null);
+			delete.setSedeLegale(null);
+			delete.setSedeOperativa(null);
 			clienteRepo.deleteById(id);
 		}
 		else {

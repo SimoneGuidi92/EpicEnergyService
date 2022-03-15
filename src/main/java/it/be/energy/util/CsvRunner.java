@@ -13,10 +13,8 @@ import it.be.energy.model.Comune;
 import it.be.energy.model.Provincia;
 import it.be.energy.repository.ComuneRepository;
 import it.be.energy.repository.ProvinciaRepository;
-import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Slf4j
 public class CsvRunner implements CommandLineRunner {
 	
 	@Autowired
@@ -38,7 +36,7 @@ public class CsvRunner implements CommandLineRunner {
 	private void initProvincia() throws Exception {
         try (CSVReader csvReader = new CSVReader(new FileReader("province-italiane_1.csv"));) {
             String[] values = null;
-            csvReader.readNext(); //
+            csvReader.readNext();
             Optional<Provincia> pr;
             Provincia provincia;
             String nome;

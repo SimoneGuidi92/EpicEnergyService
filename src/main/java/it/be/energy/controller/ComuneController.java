@@ -56,7 +56,7 @@ public class ComuneController {
 	@GetMapping("/comunenome/{nome}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca un comune tramite il suo nome")
-	public ResponseEntity<Page<Comune>> findByNomeContaining(String nome, Pageable pageable) {
+	public ResponseEntity<Page<Comune>> findByNomeContaining(@PathVariable String nome, Pageable pageable) {
 		log.info("*** findByNome comune ***");
 		Page<Comune> findByNome = comuneService.findByNomeContaining(nome, pageable);
 		log.info("*** FINE findByNome comune ***");

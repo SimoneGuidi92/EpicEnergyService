@@ -53,13 +53,13 @@ public class ProvinciaController {
 		
 	}
 	
-	@GetMapping("/provincianome/{id}")
+	@GetMapping("/provincianome/{nome}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca una provincia tramite il suo nome")
-	public ResponseEntity<Page<Provincia>> findByNomeContaining(String nome, Pageable pageable) {
+	public ResponseEntity<Page<Provincia>> findByNomeContaining(@PathVariable String nome, Pageable pageable) {
 		log.info("*** findByNome provincia ***");
 		Page<Provincia> findByNome = provinciaService.findByNomeContaining(nome, pageable);
-		log.info("*** FINE findByNome comune ***");
+		log.info("*** FINE findByNome provincia ***");
 		return new ResponseEntity<>(findByNome, HttpStatus.OK);
 		
 	}

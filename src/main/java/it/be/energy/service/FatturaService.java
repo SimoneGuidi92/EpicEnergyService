@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.FatturaException;
 import it.be.energy.model.Fattura;
-import it.be.energy.model.StatoFattura;
 import it.be.energy.repository.FatturaRepository;
 
 @Service
@@ -72,8 +71,8 @@ public class FatturaService {
 		return fatturaRepo.findByClienteRagioneSocialeContaining(pageable, nome);
 	}
 	
-	public Page<Fattura> findByStatoFattura(Pageable pageable, StatoFattura statoFattura) {
-		return fatturaRepo.findByStatoFattura(pageable, statoFattura);
+	public Page<Fattura> findByStatoFatturaId(Pageable pageable, Long id) {
+		return fatturaRepo.findByStatoFatturaId(pageable, id);
 	}
 	
 	public Page<Fattura> findByData(Pageable pageable, Date data) {
