@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Informazioni corsi</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/universita.css}"/>
+</head>
+<body>
+	<header>
+		<h1>Universita di Atlantide</h1>
+		<h2>Elenco corsi</h2>
+	
+	</header>
+	<table>
+
+		<thead>
+
+			<tr>
+
+				<th>Codice corso</th>
+				<th>Nome corso</th>
+				<th>Indirizzo</th>
+				<th>Numero esami</th>
+
+
+			</tr>
+
+		</thead>
+		<!-- th prende la collection e la cicla per tutti gli elementi, a runtime toglie i th: e mette i dati effettivi -->
+		<div th:each="c : ${corsi}">
+		<tbody>
+			<tr>
+
+				<td th:text="${c.getCodice()}"></td>
+				<td th:text="${c.getNome()}"></td>
+				<td th:text="${c.getIndirizzo()}"></td>
+				<td th:text="${c.getNumeroEsami()}"></td>
+<!-- 				<td><a th:href="@{/corsi/formaggiornacorso/{codice}(codice=${c.getCodice()})}">Aggiorna</a></td> -->
+<!-- 				<td><a th:href="@{/corsi/eliminacorso/{codice}(codice=${c.getCodice()})}" onclick="return confirm('Sei sicuro di voler eliminare questo elemento?')">Elimina</a></td> -->
+
+			</tr>
+		</tbody>
+		</div>
+	</table>
+	
+	<a href="/corsi/mostraformaggiungicorso" class="button">Aggiungi corso</a> <br> <br>
+	
+	<a href="http://localhost:8080">Torna alla home</a>
+	
+	<footer>
+		<p>Powered by Simone Guidi &copy; 2022</p>
+	</footer>
+
+</body>
+</html>

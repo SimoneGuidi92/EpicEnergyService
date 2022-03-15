@@ -32,6 +32,10 @@ public class IndirizzoController {
 	@Autowired
 	IndirizzoService indirizzoService;
 	
+	
+	/*
+	 * controller che permette di salvare un nuovo indirizzo
+	 */
 	@PostMapping("/indirizzo")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di salvare un nuovo indirizzo")
@@ -42,6 +46,9 @@ public class IndirizzoController {
 		return new ResponseEntity<>(f, HttpStatus.CREATED);
 	}
 	
+	/*
+	 * controller che permette di modificare un indirizzo
+	 */
 	@PutMapping("/indirizzo/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di modificare un indirizzo")
@@ -52,6 +59,9 @@ public class IndirizzoController {
 		return new ResponseEntity<>(f, HttpStatus.OK);
 	}
 	
+	/*
+	 * controller che permette di cancellare un indirizzo tramite il suo id
+	 */
 	@DeleteMapping("/indirizzo/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di cancellare un indirizzo tramite il suo id")
@@ -62,6 +72,9 @@ public class IndirizzoController {
 		return new ResponseEntity<>("Indirizzo cancellato correttamente", HttpStatus.OK);
 	}
 	
+	/*
+	 * controller che restituisce una lista di tutti gli indirizzi
+	 */
 	@GetMapping("/indirizzi")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Visualizza tutti gli indirizzi")
@@ -77,6 +90,9 @@ public class IndirizzoController {
 		}
 	}
 	
+	/*
+	 * controller che permette di cercare un indirizzo tramite il suo id
+	 */
 	@GetMapping("/indirizzo/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca un indirizzo tramite il suo id")

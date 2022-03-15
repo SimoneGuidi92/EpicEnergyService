@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aggiorna uno studente</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/universita.css}"/>
+</head>
+<body>
+
+	<header>
+	
+		<h1>Universita' di Atlantide</h1>
+		<h2>Aggiorna corso di laurea</h2>
+	
+	</header>
+
+	<form action="#" method="post"
+		th:action="@{/corsi/aggiornacorso/{codice}(codice=${corso.getCodice()})}"
+		th:object="${corso}">
+		<table>
+			<thead>
+				<tr>
+					<th>Codice</th>
+					<th>Nome</th>
+					<th>Indirizzo</th>
+					<th>Numero esami</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" th:field="*{codice}" id="codice" th:disabled="${codice != null}"></td>
+					<td><input type="text" th:field="*{nome}" id="nome" required="required"></td>
+					<td><input type="text" th:field="*{indirizzo}" id="indirizzo" required="required"></td>
+					<td><input type="number" th:field="*{numeroEsami}" id="numeroEsami" min="10" required="required"></td>
+				</tr>
+			</tbody>
+
+		</table>
+		<input type="submit" value="Aggiorna">
+	</form>
+	
+	<a href="http://localhost:8080">Torna alla home</a>
+	
+	<footer>
+		<p>Powered by Simone Guidi &copy; 2022</p>
+	</footer>
+</body>
+</html>

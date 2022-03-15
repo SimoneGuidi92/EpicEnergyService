@@ -34,6 +34,10 @@ public class FatturaController {
 	@Autowired
 	FatturaService fatturaService;
 
+	
+	/*
+	 * controller che permette di salvare una nuova fattura
+	 */
 	@PostMapping("/fattura")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di salvare una nuova fattura")
@@ -44,6 +48,9 @@ public class FatturaController {
 		return new ResponseEntity<>(f, HttpStatus.CREATED);
 	}
 	
+	/*
+	 * controller che permette di modificare una fattura
+	 */
 	@PutMapping("/fattura/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di modificare una fattura")
@@ -54,6 +61,9 @@ public class FatturaController {
 		return new ResponseEntity<>(f, HttpStatus.OK);
 	}
 	
+	/*
+	 * controller che permette di cancellare una fattura
+	 */
 	@DeleteMapping("/fattura/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di cancellare una fattura tramite l'id")
@@ -64,6 +74,9 @@ public class FatturaController {
 		return new ResponseEntity<>("Fattura cancellata correttamente", HttpStatus.OK);
 	}
 	
+	/*
+	 * controller che restituisce una lista di tutte le fatture
+	 */
 	@GetMapping("/fatture")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Visualizza tutte le fatture")
@@ -79,6 +92,9 @@ public class FatturaController {
 		}
 	}
 	
+	/*
+	 * controller che permette di cercare una fattura tramite il suo id
+	 */
 	@GetMapping("/fattura/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca una fattura tramite il suo id")
@@ -90,6 +106,9 @@ public class FatturaController {
 		
 	}
 	
+	/*
+	 * controller che permette di cercare una fattura tramite porzione della ragione sociale di un cliente
+	 */
 	@GetMapping("/fatturaragionesociale/{nome}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova le fatture con porzione del nome inserito")
@@ -104,9 +123,12 @@ public class FatturaController {
 		}
 	}
 	
+	/*
+	 * controller che permette di cercare le fatture tramite l'id dello stato fattura
+	 */
 	@GetMapping("/statofattura/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova le fatture tramite l'd dello stato fattura inserito")
+	@Operation(summary = "Trova le fatture tramite l'id dello stato fattura inserito")
 	public ResponseEntity<Page<Fattura>> findByStatoFattura(Pageable pageable, @PathVariable Long id) {
 		log.info("*** cerca fattura tramite stato fattura ***");
 		Page<Fattura> find = fatturaService.findByStatoFatturaId(pageable, id);
@@ -118,6 +140,9 @@ public class FatturaController {
 		}
 	}
 	
+	/*
+	 * controller che permette di cercare una fattura tramite la data inserita
+	 */
 	@GetMapping("/fatturadata/{data}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova le fatture tramite la data inserita")
@@ -132,6 +157,9 @@ public class FatturaController {
 		}
 	}
 	
+	/*
+	 * controller che permette di cercare una fattura tramite l'anno inserito
+	 */
 	@GetMapping("/fatturaanno/{anno}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova le fatture tramite l'anno inserito")
@@ -146,6 +174,9 @@ public class FatturaController {
 		}
 	}
 	
+	/*
+	 * controller che cerca tutte le fatture comprese in un range di importi inseriti
+	 */
 	@GetMapping("/fatturaimporto/{min}/{max}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Trova le fatture range di importo")

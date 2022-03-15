@@ -93,22 +93,22 @@ public class ClienteService {
 	/*
 	 * metodo che ritorna una lista di tutti i clienti in ordine per fatturato annuale ascendente
 	 */
-	public Page<Cliente> findAllOrderByFatturatoAnnualeAsc(Pageable pageable) {
+	public Page<Cliente> findAllOrderByFatturatoAnnualeDesc(Pageable pageable) {
 		return clienteRepo.findAllByOrderByFatturatoAnnualeDesc(pageable);
 	}
 	
 	/*
 	 * metodo che ritorna una lista di tutti i clienti in ordine per data inserimento
 	 */
-	public Page<Cliente> findAllOrderByDataInserimento(Pageable pageable) {
-		return clienteRepo.findAllByOrderByDataInserimento(pageable);
+	public Page<Cliente> findAllOrderByDataInserimentoDesc(Pageable pageable) {
+		return clienteRepo.findAllByOrderByDataInserimentoDesc(pageable);
 	}
 	
 	/*
 	 * metodo che ritorna una lista di tutti i clienti in ordine per data ultimo contatto
 	 */
-	public Page<Cliente> findAllOrderByDataUltimoContatto(Pageable pageable) {
-		return clienteRepo.findAllByOrderByDataUltimoContatto(pageable);
+	public Page<Cliente> findAllOrderByDataUltimoContattoDesc(Pageable pageable) {
+		return clienteRepo.findAllByOrderByDataUltimoContattoDesc(pageable);
 	}
 	
 	/*

@@ -27,6 +27,9 @@ public class ProvinciaController {
 	ProvinciaService provinciaService;
 	
 	
+	/*
+	 * controller che restituisce una lista di tutte le province
+	 */
 	@GetMapping("/province")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Visualizza tutte le province")
@@ -42,6 +45,9 @@ public class ProvinciaController {
 		}
 	}
 	
+	/*
+	 * controller che permette di cercare una provincia tramite il suo id
+	 */
 	@GetMapping("/provinciaid/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca una provincia tramite il suo id")
@@ -53,6 +59,9 @@ public class ProvinciaController {
 		
 	}
 	
+	/*
+	 * controller che permette di cercare una provincia tramite porzione del nome
+	 */
 	@GetMapping("/provincianome/{nome}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca una provincia tramite il suo nome")

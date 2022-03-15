@@ -30,6 +30,9 @@ public class StatoFatturaController {
 	@Autowired
 	StatoFatturaService statoFatturaService;
 	
+	/*
+	 * controller che permette di salvare un nuovo stato fattura
+	 */
 	@PostMapping("/salvastato")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di salvare un nuovo stato")
@@ -40,6 +43,9 @@ public class StatoFatturaController {
 		return new ResponseEntity<>(sf, HttpStatus.CREATED);
 	}
 	
+	/*
+	 * controller che permette di modificare uno stato fattura
+	 */
 	@PutMapping("/modificastato/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di modificare uno stato fattura")
@@ -50,6 +56,9 @@ public class StatoFatturaController {
 		return new ResponseEntity<>(sf, HttpStatus.OK);
 	}
 	
+	/*
+	 * controller che permette di cancellare una fattura tramite il suo id
+	 */
 	@DeleteMapping("/cancellastato/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di cancellare uno stato fattura tramite l'id")
@@ -60,6 +69,9 @@ public class StatoFatturaController {
 		return new ResponseEntity<>("Stato fattura cancellato correttamente", HttpStatus.OK);
 	}
 	
+	/*
+	 * controller che restituisce una lista di stati fattura
+	 */
 	@GetMapping("/tuttistatifattura")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Visualizza tutti gli stati fatture")
@@ -75,6 +87,9 @@ public class StatoFatturaController {
 		}
 	}
 	
+	/*
+	 * controller che permette di cercare uno stato fattura tramite il suo id
+	 */
 	@GetMapping("/statofatturaid/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca uno stato fattura tramite il suo id")

@@ -35,6 +35,9 @@ public class ClienteController {
 	@Autowired
 	ClienteService clienteService;
 	
+	/*
+	 * Controller che permette di salvare un nuovo cliente
+	 */
 	@PostMapping("/cliente")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di inserire un nuovo cliente")
@@ -45,6 +48,9 @@ public class ClienteController {
 		return new ResponseEntity<>(c, HttpStatus.CREATED);
 	}
 	
+	/*
+	 * Controller che permette di modificare un cliente
+	 */
 	@PutMapping("/cliente/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di modificare un cliente")
@@ -55,6 +61,10 @@ public class ClienteController {
 		return new ResponseEntity<>(c, HttpStatus.OK);
 	}
 	
+	
+	/*
+	 * Controller che permette di cancellare un cliente
+	 */
 	@DeleteMapping("/cliente/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Permette di cancellare un cliente tramite l'id")
@@ -65,7 +75,9 @@ public class ClienteController {
 		return new ResponseEntity<>("Cliente cancellato correttamente", HttpStatus.OK);
 	}
 	
-	
+	/*
+	 * Controller che restituisce una lista di tutti i clienti
+	 */
 	@GetMapping("/clienti")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Visualizza tutti i clienti")
@@ -81,6 +93,9 @@ public class ClienteController {
 		}
 	}
 	
+	/*
+	 * Controller che restituisce un cliente cercandolo per id
+	 */
 	@GetMapping("/cliente/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca un cliente tramite il suo id")
@@ -126,7 +141,7 @@ public class ClienteController {
 	@Operation(summary = "Permette di ordinare per fatturato annuale i clienti")
 	public ResponseEntity<Page<Cliente>> findAllOrderByFatturatoAnnualeAsc(Pageable pageable) {
 		log.info("*** ordine per fatturato annuale cliente ***");
-		Page<Cliente> find = clienteService.findAllOrderByFatturatoAnnualeAsc(pageable);
+		Page<Cliente> find = clienteService.findAllOrderByFatturatoAnnualeDesc(pageable);
 		if(find.hasContent()) {
 
 			return new ResponseEntity<>(find, HttpStatus.OK);
@@ -143,9 +158,9 @@ public class ClienteController {
 	@GetMapping("/clientedatainserimento")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Permette di ordinare per data inserimento i clienti")
-	public ResponseEntity<Page<Cliente>> findAllOrderByDataInserimento(Pageable pageable) {
+	public ResponseEntity<Page<Cliente>> findAllOrderByDataInserimentoDesc(Pageable pageable) {
 		log.info("*** ordine per data inserimento cliente ***");
-		Page<Cliente> find = clienteService.findAllOrderByDataInserimento(pageable);
+		Page<Cliente> find = clienteService.findAllOrderByDataInserimentoDesc(pageable);
 		if(find.hasContent()) {
 
 			return new ResponseEntity<>(find, HttpStatus.OK);
@@ -162,9 +177,9 @@ public class ClienteController {
 	@GetMapping("/clientedataultimocontatto")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Permette di ordinare per data ultimo contatto i clienti")
-	public ResponseEntity<Page<Cliente>> findAllOrderByDataUltimoContatto(Pageable pageable) {
+	public ResponseEntity<Page<Cliente>> findAllOrderByDataUltimoContattoDesc(Pageable pageable) {
 		log.info("*** ordine per data ultimo contatto cliente ***");
-		Page<Cliente> find = clienteService.findAllOrderByDataUltimoContatto(pageable);
+		Page<Cliente> find = clienteService.findAllOrderByDataUltimoContattoDesc(pageable);
 		if(find.hasContent()) {
 
 			return new ResponseEntity<>(find, HttpStatus.OK);

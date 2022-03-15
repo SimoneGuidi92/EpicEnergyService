@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aggiungi uno studente</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/universita.css}"/>
+</head>
+<body>
+	<header>
+	
+		<h1>Universita' di Atlantide</h1>
+		<h2>Aggiungi nuovo studente</h2>
+	
+	</header>
+
+	<form action="#" method="post"
+		th:action="@{/web/aggiungistudente}" th:object="${studente}">
+		<table>
+			<thead>
+				<tr>
+
+
+<!-- 					<th>Matricola</th> -->
+					<th>Nome</th>
+					<th>Cognome</th>
+<!-- 					<th>Data di nascita</th> -->
+					<th>Email</th>
+					<th>Indirizzo</th>
+					<th>Citta'</th>
+					<th>Corso di laurea</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+<!-- 					<td><input type="text" th:field="*{matricola}" id="matricola" required="required"></td> -->
+					<td><input type="text" th:field="*{nome}" id="nome" required="required"></td>
+					<td><input type="text" th:field="*{cognome}" id="cognome" required="required"></td>
+<!-- 					<td><input type="date" pattern="yyyy-MM-dd" -->
+<!-- 						th:field="*{dataNascita}" id="dataNascita" required="required"></td> -->
+					<td><input type="email" th:field="*{email}" id="email" required="required"></td>
+					<td><input type="text" th:field="*{indirizzo}" id="indirizzo" required="required"></td>
+					<td><input type="text" th:field="*{citta}" id="citta" required="required"></td>
+
+					
+						<td>
+							<select th:field="*{corsoDiLaurea}">
+							
+								<div th:each="c : ${corsi}">
+									<option th:text="${c.nome}" th:value="${c.id}"></option>
+								</div>
+							
+							
+							</select>
+						</td>
+					
+					<td><input type="submit" value="Inserisci studente"></td>
+				</tr>
+			</tbody>
+
+		</table>
+		
+	</form>
+	<a href="http://localhost:8080">Torna alla home</a>
+	
+	<footer>
+		<p>Powered by Simone Guidi &copy; 2022</p>
+	</footer>
+</body>
+</html>

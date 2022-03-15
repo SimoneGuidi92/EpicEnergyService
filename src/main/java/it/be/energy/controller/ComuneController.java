@@ -27,6 +27,9 @@ public class ComuneController {
 	ComuneService comuneService;
 	
 	
+	/*
+	 * controller che restituisce una lista di comuni
+	 */
 	@GetMapping("/comuni")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Visualizza tutte le province")
@@ -42,6 +45,9 @@ public class ComuneController {
 		}
 	}
 	
+	/*
+	 * controller che restituisce un comune cercandolo per id
+	 */
 	@GetMapping("/comuneid/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca un comune tramite il suo id")
@@ -53,6 +59,9 @@ public class ComuneController {
 		
 	}
 	
+	/*
+	 * controller che permette di cercare un comune tramite porzione del nome
+	 */
 	@GetMapping("/comunenome/{nome}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca un comune tramite il suo nome")
