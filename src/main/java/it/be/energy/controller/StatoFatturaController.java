@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
-import it.be.energy.model.Fattura;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.model.StatoFattura;
 import it.be.energy.service.StatoFatturaService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/statofattura")
 @Slf4j
+@SecurityRequirement(name = "bearerAuth")
 public class StatoFatturaController {
 
 	@Autowired

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.model.Comune;
 import it.be.energy.service.ComuneService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api")
 @Slf4j
+@SecurityRequirement(name = "bearerAuth")
 public class ComuneController {
 
 	@Autowired
@@ -51,7 +53,7 @@ public class ComuneController {
 		
 	}
 	
-	@GetMapping("/comunenome/{id}")
+	@GetMapping("/comunenome/{nome}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 	@Operation(summary = "Cerca un comune tramite il suo nome")
 	public ResponseEntity<Page<Comune>> findByNomeContaining(String nome, Pageable pageable) {

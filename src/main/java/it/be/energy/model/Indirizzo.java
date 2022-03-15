@@ -25,7 +25,7 @@ public class Indirizzo {
 	private String via;
 	private String civico;
 	private String localita;
-	private Integer cap;
+	private String cap;
 	
 	@ManyToOne
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
