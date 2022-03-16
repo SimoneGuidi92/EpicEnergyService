@@ -4,75 +4,95 @@
 <meta charset="ISO-8859-1">
 <title>Informazioni Clienti</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" th:href="@{/css/energy.css}"/>
+<link rel="stylesheet" th:href="@{/css/energy.css}" />
 </head>
 <body>
 	<header>
 		<h1>Epic Energy Services</h1>
 		<h2>Elenco clienti</h2>
-	
+
 	</header>
-	<table>
+	<div class="tabella">
+		<table>
 
-		<thead>
+			<thead>
 
-			<tr>
+				<tr>
 
-				<th>Id</th>
-				<th>Ragione sociale</th>
-				<th>Partita IVA</th>
-				<th>Email</th>
-				<th>Data inserimento</th>
-				<th>Data ultimo contatto</th>
-				<th>Fatturato annuale</th>
-				<th>Pec</th>
-				<th>Telefono</th>
-				<th>Email contatto</th>
-				<th>Nome contatto</th>
-				<th>Cognome contatto</th>
-				<th>Telefono contatto</th>
-				<th>Tipo</th>
-				<th>Sede legale</th>
-				<th>Sede operativa</th>
+					<th>Id</th>
+					<th>Ragione sociale</th>
+					<th>Partita IVA</th>
+					<th>Email</th>
+					<th>Data inserimento</th>
+					<th>Data ultimo contatto</th>
+					<th>Fatturato annuale</th>
+					<th>Pec</th>
+					<th>Telefono</th>
+					<th>Email contatto</th>
+					<th>Nome contatto</th>
+					<th>Cognome contatto</th>
+					<th>Telefono contatto</th>
+					<th>Tipo</th>
+					<th>Sede legale</th>
+					<th>Sede operativa</th>
+
+
+
+
+				</tr>
+
+			</thead>
+			<!-- th prende la collection e la cicla per tutti gli elementi, a runtime toglie i th: e mette i dati effettivi -->
+			<div th:each="c : ${clienti}">
+				<tbody>
+					<tr>
+
+						<td th:text="${c.id}"></td>
+						<td th:text="${c.ragioneSociale}"></td>
+						<td th:text="${c.partitaIva}"></td>
+						<td th:text="${c.email}"></td>
+						<td th:text="${c.dataInserimento}"></td>
+						<td th:text="${c.dataUltimoContatto}"></td>
+						<td th:text="${c.fatturatoAnnuale}"></td>
+						<td th:text="${c.pec}"></td>
+						<td th:text="${c.telefono}"></td>
+						<td th:text="${c.emailContatto}"></td>
+						<td th:text="${c.nomeContatto}"></td>
+						<td th:text="${c.cognomeContatto}"></td>
+						<td th:text="${c.telefonoContatto}"></td>
+						<td th:text="${c.tipo}"></td>
+						<td th:text="${c.visualizzaSedeLegale()}"></td>
+						<td th:text="${c.visualizzaSedeOperativa()}"></td>
+						<td><a
+							th:href="@{/web/mostraformaggiorna/{id}(id=${c.getId()})}">Aggiorna</a></td>
+						<td><a th:href="@{/web/eliminacliente/{id}(id=${c.getId})}"
+							onclick="return confirm('Sei sicuro di voler eliminare questo elemento?')">Elimina</a></td>
+
+					</tr>
+				</tbody>
+			</div>
+		</table>
+		<a href="/web/mostraformaggiungi" class="button">Aggiungi cliente</a>
+		<a href="http://localhost:8080" class="button">Torna alla home</a>
+		<br>
+		<form>
+			<fieldset>
+				<legend>Ordinamento:</legend>
+				<a href="/web/ordinaragionesociale">Ordina per ragione sociale</a><br><br> 
+				<a href="/web/ordinafatturatoannuale">Ordina per fatturato annuale</a><br><br>
+				<a href="/web/ordinadatainserimento">Ordina per data inserimento</a><br><br>
+				<a href="/web/ordinadataultimocontatto">Ordina per data ultimo contatto</a><br><br>
 				
-				
+			</fieldset>
+		</form>
 
-
-			</tr>
-
-		</thead>
-		<!-- th prende la collection e la cicla per tutti gli elementi, a runtime toglie i th: e mette i dati effettivi -->
-		<div th:each="c : ${clienti}">
-		<tbody>
-			<tr>
-
-				<td th:text="${c.id}"></td>
-				<td th:text="${c.ragioneSociale}"></td>
-				<td th:text="${c.partitaIva}"></td>
-				<td th:text="${c.email}"></td>
-				<td th:text="${c.dataInserimento}"></td>
-				<td th:text="${c.dataUltimoContatto}"></td>
-				<td th:text="${c.fatturatoAnnuale}"></td>
-				<td th:text="${c.pec}"></td>
-				<td th:text="${c.telefono}"></td>
-				<td th:text="${c.emailContatto}"></td>
-				<td th:text="${c.nomeContatto}"></td>
-				<td th:text="${c.cognomeContatto}"></td>
-				<td th:text="${c.telefonoContatto}"></td>
-				<td th:text="${c.tipo}"></td>
-				<td th:text="${c.visualizzaSedeLegale()}"></td>
-				<td th:text="${c.visualizzaSedeOperativa()}"></td>
-<!-- 				<td><a th:href="@{/studenti/formaggiornastudente/{matricola}(matricola=${s.getMatricola()})}">Aggiorna</a></td> -->
-<!-- 				<td><a th:href="@{/web/eliminastudente/{id}(id=${s.id})}" onclick="return confirm('Sei sicuro di voler eliminare questo elemento?')">Elimina</a></td> -->
-
-			</tr>
-		</tbody>
-		</div>
-	</table>
-	<a href="/studenti/mostraform" class="button">Aggiungi cliente</a> <br> <br>
+	</div>
 	
-	<a href="http://localhost:8080">Torna alla home</a>
+	<br>
+	<br>
+
 	
+
 	<footer>
 		<p>Powered by Simone Guidi &copy; 2022</p>
 	</footer>

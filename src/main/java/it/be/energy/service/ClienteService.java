@@ -83,6 +83,10 @@ public class ClienteService {
 		}
 	}
 	
+	public Cliente getById(Long id) {
+		return clienteRepo.getById(id);
+	}
+	
 	/*
 	 * metodo che ritorna una lista di tutti i clienti in ordine per ragione sociale ascendente
 	 */

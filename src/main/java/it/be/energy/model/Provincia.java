@@ -42,6 +42,15 @@ public class Provincia {
 		this.nome = nome;
 		this.regione = regione;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Provincia [id=" + id + ", codProvincia=" + codProvincia + ", sigla=" + sigla + ", nome=" + nome
+				+ ", regione=" + regione + "]";
+	}
+	
+	
 	
 	
 	

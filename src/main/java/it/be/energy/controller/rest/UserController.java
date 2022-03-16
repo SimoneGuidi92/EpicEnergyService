@@ -1,4 +1,4 @@
-package it.be.energy.controller;
+package it.be.energy.controller.rest;
 
 import java.util.Optional;
 

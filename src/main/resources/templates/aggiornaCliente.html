@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aggiorna un cliente</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/energy.css}" />
+</head>
+<body>
+	<header>
+
+		<h1>Epic Energy Service</h1>
+		<h2>Aggiorna cliente</h2>
+
+	</header>
+
+	<form action="#" method="post"
+		th:action="@{/web/aggiornacliente/{id}(id=${cliente.id})}"
+		th:object="${cliente}">
+		<div class="tabella">
+			<table>
+				
+					<tr><th>Id</th><td><input type="text" th:field="*{id}" id="id" th:disabled="${id != null}"></td></tr>
+					<tr><th>Ragione sociale</th><td><input type="text" th:field="*{ragioneSociale}" id="ragioneSociale" required="required"></td></tr>
+					<tr><th>Partita IVA</th><td><input type="text" th:field="*{partitaIva}" id="partitaIva" required="required"></td></tr>
+					<tr class="table-active"><th>Tipo: </th>
+						<td>
+							<select type="text" th:field="*{tipo}">
+								<option value="PA">PA</option>
+								<option value="SAS">SAS</option>
+								<option value="SPA">SPA</option>
+								<option value="SRL">SRL</option>
+							</select>
+						<tr class="table-active"><th>Email: </th><td><input type="email" th:field="*{email}" id="email" required="required"></td></tr>
+					<tr class="table-active"><th>Data inserimento: </th><td><input type="date" pattern="yyyy-MM-dd" th:field="*{dataInserimento}" id="dataInserimento"  required="required"></td></tr>
+					<tr class="table-active"><th>Data ultimo contatto: </th><td><input type="date" pattern="yyyy-MM-dd" th:field="*{dataUltimoContatto}" id="dataUltimoContatto" required="required"></td></tr>
+					<tr class="table-active"><th>Fatturato annuale: </th><td><input type="number" th:field="*{fatturatoAnnuale}" id="fatturatoAnnuale" required="required"></td></tr>
+					<tr class="table-active"><th>Pec: </th><td><input type="email" th:field="*{pec}" id="pec" required="required"></td></tr>
+					<tr class="table-active"><th>Telefono: </th><td><input type="text" th:field="*{telefono}" id="telefono" required="required"></td></tr>
+					<tr class="table-active"><th>Email contatto: </th><td><input type="email" th:field="*{emailContatto}" id="emailContatto" required="required"></td></tr>
+					<tr class="table-active"><th>Nome contatto: </th><td><input type="text" th:field="*{nomeContatto}" id="nomeContatto" required="required"></td></tr>
+					<tr class="table-active"><th>Cognome contatto: </th><td><input type="text" th:field="*{cognomeContatto}" id="cognomeContatto" required="required"></td></tr>
+					<tr class="table-active"><th>Telefono contatto: </th><td><input type="text" th:field="*{telefonoContatto}" id="telefonoContatto" required="required"></td></tr>
+					<tr class="table-active"><th>Indirizzo sede legale:</th></tr>
+					<tr class="table-active"><th>Via: </th><td><input type="text" th:field="*{sedeLegale.via}" id="viaSedeLegale" required="required"></td></tr>
+					<tr class="table-active"><th>Civico: </th><td><input type="text" th:field="*{sedeLegale.civico}" id="civicoSedeLegale" required="required"></td></tr>
+					<tr class="table-active"><th>Cap: </th><td><input type="text" th:field="*{sedeLegale.cap}" id="capSedeLegale" required="required"></td></tr>
+					<tr class="table-active"><th>Comune: </th>
+						<td>
+							<select th:field="*{sedeLegale.comune}">
+							
+								<div th:each="c : ${comuni}">
+									<option th:text="${c.nome}" th:value="${c.id}"></option>
+								</div>
+							
+							
+							</select>
+						</td>
+					</tr>
+						
+					<tr class="table-active"><th>Indirizzo sede operativa:</th></tr>
+					<tr class="table-active"><th>Via: </th><td><input type="text" th:field="*{sedeOperativa.via}" id="viaSedeLegale" required="required"></td></tr>
+					<tr class="table-active"><th>Civico: </th><td><input type="text" th:field="*{sedeOperativa.civico}" id="civicoSedeLegale" required="required"></td></tr>
+					<tr class="table-active"><th>Cap: </th><td><input type="text" th:field="*{sedeOperativa.cap}" id="capSedeLegale" required="required"></td></tr>
+					<tr class="table-active"><th>Comune: </th>
+						<td>
+							<select th:field="*{sedeOperativa.comune}">
+							
+								<div th:each="c : ${comuni}">
+									<option th:text="${c.nome}" th:value="${c.id}"></option>
+								</div>
+							
+							
+							</select>
+						</td>
+					</tr>
+
+			</table>
+			<input type="submit" value="Aggiorna" class="button">
+			<a href="http://localhost:8080" class="button">Torna alla home</a>
+		</div>	
+		
+	</form>
+
+	
+
+	<footer>
+		<p>Powered by Simone Guidi &copy; 2022</p>
+	</footer>
+</body>
+</html>

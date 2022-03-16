@@ -1,4 +1,4 @@
-package it.be.energy.controller;
+package it.be.energy.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

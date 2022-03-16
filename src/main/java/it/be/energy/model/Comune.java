@@ -41,6 +41,11 @@ public class Comune {
 		this.provincia = provincia;
 	}
 
+	@Override
+	public String toString() {
+		return "Comune [id=" + id + ", nome=" + nome + "]";
+	}
+
 	
 	
 	

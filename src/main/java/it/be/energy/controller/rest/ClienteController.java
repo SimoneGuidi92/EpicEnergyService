@@ -1,4 +1,4 @@
-package it.be.energy.controller;
+package it.be.energy.controller.rest;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

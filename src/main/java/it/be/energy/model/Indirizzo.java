@@ -36,5 +36,11 @@ public class Indirizzo {
 	public String visualizzaIndirizzo() {
 		return via + " " + civico + "\n" + "Cap: " + cap + "\n" + comune.getNome();
 	}
+
+	@Override
+	public String toString() {
+		return "Indirizzo [id=" + id + ", via=" + via + ", civico=" + civico + ", localita=" + localita + ", cap=" + cap
+				+ "]";
+	}
 	
 }
