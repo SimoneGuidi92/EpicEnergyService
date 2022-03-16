@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Informazioni Clienti</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/energy.css}"/>
+</head>
+<body>
+	<header>
+		<h1>Epic Energy Services</h1>
+		<h2>Elenco clienti</h2>
+	
+	</header>
+	<table>
+
+		<thead>
+
+			<tr>
+
+				<th>Id</th>
+				<th>Ragione sociale</th>
+				<th>Partita IVA</th>
+				<th>Email</th>
+				<th>Data inserimento</th>
+				<th>Data ultimo contatto</th>
+				<th>Fatturato annuale</th>
+				<th>Pec</th>
+				<th>Telefono</th>
+				<th>Email contatto</th>
+				<th>Nome contatto</th>
+				<th>Cognome contatto</th>
+				<th>Telefono contatto</th>
+				<th>Tipo</th>
+				<th>Sede legale</th>
+				<th>Sede operativa</th>
+				
+				
+
+
+			</tr>
+
+		</thead>
+		<!-- th prende la collection e la cicla per tutti gli elementi, a runtime toglie i th: e mette i dati effettivi -->
+		<div th:each="c : ${clienti}">
+		<tbody>
+			<tr>
+
+				<td th:text="${c.id}"></td>
+				<td th:text="${c.ragioneSociale}"></td>
+				<td th:text="${c.partitaIva}"></td>
+				<td th:text="${c.email}"></td>
+				<td th:text="${c.dataInserimento}"></td>
+				<td th:text="${c.dataUltimoContatto}"></td>
+				<td th:text="${c.fatturatoAnnuale}"></td>
+				<td th:text="${c.pec}"></td>
+				<td th:text="${c.telefono}"></td>
+				<td th:text="${c.emailContatto}"></td>
+				<td th:text="${c.nomeContatto}"></td>
+				<td th:text="${c.cognomeContatto}"></td>
+				<td th:text="${c.telefonoContatto}"></td>
+				<td th:text="${c.tipo}"></td>
+				<td th:text="${c.visualizzaSedeLegale()}"></td>
+				<td th:text="${c.visualizzaSedeOperativa()}"></td>
+<!-- 				<td><a th:href="@{/studenti/formaggiornastudente/{matricola}(matricola=${s.getMatricola()})}">Aggiorna</a></td> -->
+<!-- 				<td><a th:href="@{/web/eliminastudente/{id}(id=${s.id})}" onclick="return confirm('Sei sicuro di voler eliminare questo elemento?')">Elimina</a></td> -->
+
+			</tr>
+		</tbody>
+		</div>
+	</table>
+	<a href="/studenti/mostraform" class="button">Aggiungi cliente</a> <br> <br>
+	
+	<a href="http://localhost:8080">Torna alla home</a>
+	
+	<footer>
+		<p>Powered by Simone Guidi &copy; 2022</p>
+	</footer>
+
+</body>
+</html>

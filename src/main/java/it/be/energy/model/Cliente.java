@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -49,5 +50,13 @@ public class Cliente {
 	@OneToMany(mappedBy = "cliente")
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	private List<Fattura> fatture;
+	
+	public String visualizzaSedeLegale() {
+		return sedeLegale.getVia() + " " + sedeLegale.getCivico() + "\n" + "Cap: " + sedeLegale.getCap();
+	}
+	
+	public String visualizzaSedeOperativa() {
+		return sedeOperativa.getVia() + " " + sedeOperativa.getCivico() + "\n" + "Cap: " + sedeOperativa.getCap();
+	}
 	
 }

@@ -33,4 +33,8 @@ public class Indirizzo {
 	@JsonIgnoreProperties( {"provincia", "indirizzi"})
 	private Comune comune;
 	
+	public String visualizzaIndirizzo() {
+		return via + " " + civico + "\n" + "Cap: " + cap + "\n" + comune.getNome();
+	}
+	
 }
