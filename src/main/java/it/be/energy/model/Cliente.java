@@ -52,11 +52,11 @@ public class Cliente {
 	private List<Fattura> fatture;
 	
 	public String visualizzaSedeLegale() {
-		return sedeLegale.getVia() + " " + sedeLegale.getCivico() + "\n" + "Cap: " + sedeLegale.getCap();
+		return sedeLegale.getVia() + " " + sedeLegale.getCivico() + "\n" + "Cap: " + sedeLegale.getCap() + " " + sedeLegale.getComune().getNome();
 	}
 	
 	public String visualizzaSedeOperativa() {
-		return sedeOperativa.getVia() + " " + sedeOperativa.getCivico() + "\n" + "Cap: " + sedeOperativa.getCap();
+		return sedeOperativa.getVia() + " " + sedeOperativa.getCivico() + "\n" + "Cap: " + sedeOperativa.getCap() + " " + sedeOperativa.getComune().getNome();
 	}
 	
 }

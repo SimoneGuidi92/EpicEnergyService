@@ -1,5 +1,6 @@
 package it.be.energy.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,17 +78,37 @@ public class ClienteControllerWeb {
 		
 			
 			Indirizzo indirizzoSedeLegale = new Indirizzo();
+			
+			List<Comune> comuni = comuneService.findAll();
+			
+			Long comuneSedeLegale = cliente.getSedeLegale().getComune().getId();
+			
 			indirizzoSedeLegale.setVia(cliente.getSedeLegale().getVia());
 			indirizzoSedeLegale.setCivico(cliente.getSedeLegale().getCivico());
 			indirizzoSedeLegale.setCap(cliente.getSedeLegale().getCap());
+			for (Comune comune : comuni) {
+				if(comune.getId().equals(comuneSedeLegale)) {
+					indirizzoSedeLegale.setComune(comune);
+				}
+			}
 			indirizzoService.save(indirizzoSedeLegale);
 			Optional<Indirizzo> findLegale = indirizzoService.findById(indirizzoSedeLegale.getId());
 			cliente.setSedeLegale(findLegale.get());
 			
+			
+			
 			Indirizzo indirizzoSedeOperativa = new Indirizzo();
+			
+			Long comuneSedeOperativa = cliente.getSedeOperativa().getComune().getId();
+			
 			indirizzoSedeOperativa.setVia(cliente.getSedeOperativa().getVia());
 			indirizzoSedeOperativa.setCivico(cliente.getSedeOperativa().getCivico());
 			indirizzoSedeOperativa.setCap(cliente.getSedeOperativa().getCap());
+			for (Comune comune : comuni) {
+				if(comune.getId().equals(comuneSedeOperativa)) {
+					indirizzoSedeOperativa.setComune(comune);
+				}
+			}
 			indirizzoService.save(indirizzoSedeOperativa);
 			Optional<Indirizzo> findOperativa = indirizzoService.findById(indirizzoSedeOperativa.getId());
 			cliente.setSedeOperativa(findOperativa.get());
