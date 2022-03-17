@@ -5,7 +5,8 @@ body {
 
 header {
 	padding: 10px 10px;
-	background: #acb3b9;
+	background: #1E90FF;
+	/*background: #acb3b9;*/
 	text-align: center;
 }
 body {
@@ -57,7 +58,7 @@ body {
 }
 
 footer {
-	background: #acb3b9;
+	background: #1E90FF;
 	text-align: center;
 	padding: 15px;
 	position: fixed;
