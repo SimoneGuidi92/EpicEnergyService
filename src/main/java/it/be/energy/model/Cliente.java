@@ -58,5 +58,12 @@ public class Cliente {
 	public String visualizzaSedeOperativa() {
 		return sedeOperativa.getVia() + " " + sedeOperativa.getCivico() + "\n" + "Cap: " + sedeOperativa.getCap() + " " + sedeOperativa.getComune().getNome();
 	}
+
+	@Override
+	public String toString() {
+		return ragioneSociale;
+	}
+	
+	
 	
 }

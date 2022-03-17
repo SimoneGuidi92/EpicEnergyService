@@ -21,4 +21,10 @@ public class StatoFattura {
 	private String nome;
 	
 	
+	@Override
+	public String toString() {
+		return nome;
+	}
+	
+	
 }

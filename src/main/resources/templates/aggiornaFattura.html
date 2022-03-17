@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aggiorna una fattura</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/energy.css}" />
+</head>
+<body>
+	<header>
+
+		<h1>Epic Energy Service</h1>
+		<h2>Aggiorna fattura</h2>
+
+	</header>
+
+	<form action="#" method="post"
+		th:action="@{/web/fattura/aggiornafattura/{id}(id=${fattura.id})}"
+		th:object="${fattura}">
+		<div class="tabella">
+			<table>
+				
+					<tr><th>Id: </th><td><input type="text" th:field="*{id}" id="id" th:disabled="${id != null}"></td></tr>
+					<tr class="table-active"><th>Numero fattura: </th><td><input type="number" th:field="*{numeroFattura}" id="numeroFattura" required="required"></td></tr>
+					<tr class="table-active"><th>Anno: </th><td><input type="number" th:field="*{anno}" id="anno" required="required"></td></tr>
+					<tr class="table-active"><th>Data: </th><td><input type="date" pattern="yyyy-MM-dd' 'HH:mm:ss" th:field="*{data}" id="data" required="required"></td></tr>
+					<tr class="table-active"><th>Importo: </th><td><input type="number" th:field="*{importo}" id="importo" required="required"></td></tr>
+					<tr class="table-active"><th>Stato fattura: </th>
+						<td>
+							<select th:field="*{statoFattura}">
+							
+								<div th:each="sf : ${statiFattura}">
+									<option th:text="${sf.nome}" th:value="${sf.id}"></option>
+								</div>
+							
+							
+							</select>
+						</td>
+					</tr>
+					
+					<tr class="table-active"><th>Cliente: </th>
+						<td>
+							<select th:field="*{cliente}">
+							
+								<div th:each="c : ${clienti}">
+									<option th:text="${c.ragioneSociale}" th:value="${c.id}"></option>
+								</div>
+							
+							
+							</select>
+						</td>
+					</tr>
+
+
+			</table>
+			<input type="submit" value="Aggiorna" class="button">
+			<a href="http://localhost:8080" class="button">Torna alla home</a>
+		</div>	
+		
+	</form>
+
+	
+
+	<footer>
+		<p>Powered by Simone Guidi &copy; 2022</p>
+	</footer>
+</body>
+</html>

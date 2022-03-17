@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Informazioni fatture</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/energy.css}" />
+</head>
+<body>
+	<header>
+		<h1>Epic Energy Services</h1>
+		<h2>Elenco fatture</h2>
+
+	</header>
+	<div class="tabella">
+		<table>
+
+			<thead>
+
+				<tr>
+
+					<th>Id</th>
+					<th>Numero fattura</th>
+					<th>Anno</th>
+					<th>Data</th>
+					<th>Importo</th>
+					<th>Stato fattura</th>
+					<th>Cliente</th>
+
+
+
+
+				</tr>
+
+			</thead>
+			<!-- th prende la collection e la cicla per tutti gli elementi, a runtime toglie i th: e mette i dati effettivi -->
+			<div th:each="f : ${fatture}">
+				<tbody>
+					<tr>
+
+						<td th:text="${f.id}"></td>
+						<td th:text="${f.numeroFattura}"></td>
+						<td th:text="${f.anno}"></td>
+						<td th:text="${f.data}"></td>
+						<td th:text="${f.importo}"></td>
+						<td th:text="${f.statoFattura}"></td>
+						<td th:text="${f.cliente}"></td>
+						<td><a
+							th:href="@{/web/fattura/mostraformaggiorna/{id}(id=${f.getId()})}">Aggiorna</a></td>
+						<td><a th:href="@{/web/fattura/eliminafattura/{id}(id=${f.getId})}"
+							onclick="return confirm('Sei sicuro di voler eliminare questo elemento?')">Elimina</a></td>
+
+					</tr>
+				</tbody>
+			</div>
+		</table>
+		<a href="/web/fattura/mostraformaggiungi" class="button">Aggiungi fattura</a>
+		<a href="http://localhost:8080" class="button">Torna alla home</a>
+		
+
+	</div>
+	
+	<br>
+	<br>
+
+	
+
+	<footer>
+		<p>Powered by Simone Guidi &copy; 2022</p>
+	</footer>
+
+</body>
+</html>

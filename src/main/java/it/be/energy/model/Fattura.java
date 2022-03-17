@@ -1,7 +1,7 @@
 package it.be.energy.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,8 +29,8 @@ public class Fattura {
 	private Long id;
 	private Long numeroFattura;
 	private Integer anno;
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Europe/Madrid")
-	private Date data;
+	@JsonFormat(pattern = "yyyy-MM-dd' 'HH:mm:ss", timezone = "Europe/Madrid")
+	private LocalDate data;
 	private BigDecimal importo;
 	
 	@ManyToOne
@@ -40,5 +40,12 @@ public class Fattura {
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	@JsonIgnoreProperties({"dataInserimento", "dataUltimoContatto", "pec", "fatture", "sedeLegale", "sedeOperativa"})
 	private Cliente cliente;
+
+	@Override
+	public String toString() {
+		return "Fattura [id=" + id + ", numeroFattura=" + numeroFattura + ", anno=" + anno + ", data=" + data
+				+ ", importo=" + importo + "]";
+	}
+	
 	
 }

@@ -84,9 +84,8 @@ public class DataLoadRunner implements CommandLineRunner {
 		i4.setVia("Via del commercio");
 		indirizzoRepo.save(i4);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date data1 = sdf.parse("2022-02-22");
-		Date data2 = sdf.parse("2021-02-22");
+		LocalDate data1 = LocalDate.of(2022, 03, 20);
+		LocalDate data2 = LocalDate.of(2022, 03, 20);
 		
 		StatoFattura pagata = new StatoFattura();
 		pagata.setNome("Pagata");
