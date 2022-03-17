@@ -9,7 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -29,7 +30,7 @@ public class Fattura {
 	private Long id;
 	private Long numeroFattura;
 	private Integer anno;
-	@JsonFormat(pattern = "yyyy-MM-dd' 'HH:mm:ss", timezone = "Europe/Madrid")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate data;
 	private BigDecimal importo;
 	
