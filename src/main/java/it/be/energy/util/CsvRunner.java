@@ -18,16 +18,16 @@ import it.be.energy.repository.ProvinciaRepository;
 public class CsvRunner implements CommandLineRunner {
 	
 	@Autowired
-	ProvinciaRepository provinciaRepo;
+	ProvinciaRepository provinciaRepo;	// TODO utilizzare il service
 	
 	@Autowired
-	ComuneRepository comuneRepo;
+	ComuneRepository comuneRepo;	// TODO utilizzare il service
 	
 	
 	@Override
 	public void run(String... args) throws Exception {
 		
-		
+		// inserire controllo db
 		initComune();
 		initProvincia();
 		

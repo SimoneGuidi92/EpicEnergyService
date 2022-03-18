@@ -160,13 +160,7 @@ public class DataLoadRunner implements CommandLineRunner {
 		
 		fatturaRepo.save(f2);
 		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 	
 	

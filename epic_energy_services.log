@@ -913,4 +913,102 @@
 ""2022-03-18 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 ""2022-03-18 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
 ""2022-03-18 [http-nio-8080-exec-5] INFO  i.b.e.c.web.ClienteControllerWeb - *** findAllClienti ***
+""2022-03-18 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-18 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-03-18 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-03-18 [restartedMain] INFO  i.b.e.EpicEnergyServicesApplication - Starting EpicEnergyServicesApplication using Java 11.0.13 on DESKTOP-G24BRBM with PID 41936 (E:\Archivio\eclipse\workspace\EpicEnergyServices\target\classes started by gsmak in E:\Archivio\eclipse\workspace\EpicEnergyServices)
+""2022-03-18 [restartedMain] INFO  i.b.e.EpicEnergyServicesApplication - No active profile set, falling back to 1 default profile: "default"
+""2022-03-18 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-03-18 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 8 JPA repository interfaces.
+""2022-03-18 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+""2022-03-18 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2022-03-18 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.58]
+""2022-03-18 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+""2022-03-18 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 706 ms
+""2022-03-18 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-03-18 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-03-18 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+""2022-03-18 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+""2022-03-18 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+""2022-03-18 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-03-18 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-18 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure any request
+""2022-03-18 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-03-18 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+""2022-03-18 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+""2022-03-18 [restartedMain] INFO  i.b.e.EpicEnergyServicesApplication - Started EpicEnergyServicesApplication in 2.558 seconds (JVM running for 541.368)
+""2022-03-18 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+""2022-03-18 [RMI TCP Connection(89)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2022-03-18 [RMI TCP Connection(89)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-18 [RMI TCP Connection(89)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+""2022-03-18 [RMI TCP Connection(89)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+""2022-03-18 [restartedMain] INFO  i.b.e.EpicEnergyServicesApplication - Starting EpicEnergyServicesApplication using Java 11.0.13 on DESKTOP-G24BRBM with PID 35624 (E:\Archivio\eclipse\workspace\EpicEnergyServices\target\classes started by gsmak in E:\Archivio\eclipse\workspace\EpicEnergyServices)
+""2022-03-18 [restartedMain] INFO  i.b.e.EpicEnergyServicesApplication - No active profile set, falling back to 1 default profile: "default"
+""2022-03-18 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+""2022-03-18 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+""2022-03-18 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-03-18 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 8 JPA repository interfaces.
+""2022-03-18 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+""2022-03-18 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2022-03-18 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.58]
+""2022-03-18 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+""2022-03-18 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1740 ms
+""2022-03-18 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-03-18 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-03-18 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.5.Final
+""2022-03-18 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-03-18 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-03-18 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-03-18 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+""2022-03-18 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-03-18 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-18 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure any request
+""2022-03-18 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-03-18 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+""2022-03-18 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+""2022-03-18 [restartedMain] INFO  i.b.e.EpicEnergyServicesApplication - Started EpicEnergyServicesApplication in 5.912 seconds (JVM running for 6.761)
+""2022-03-18 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2022-03-18 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+""2022-03-18 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+""2022-03-18 [http-nio-8080-exec-2] INFO  i.b.e.c.rest.ClienteController - *** INIZIO save cliente ***
+""2022-03-18 [http-nio-8080-exec-2] INFO  i.b.e.c.rest.ClienteController - *** FINE save cliente ***
+""2022-03-18 [http-nio-8080-exec-5] INFO  i.b.e.c.rest.ClienteController - *** INIZIO update cliente ***
+""2022-03-18 [http-nio-8080-exec-5] INFO  i.b.e.c.rest.ClienteController - *** FINE update cliente ***
+""2022-03-18 [http-nio-8080-exec-6] INFO  i.b.e.c.rest.ClienteController - *** INIZIO delete cliente ***
+""2022-03-18 [http-nio-8080-exec-6] INFO  i.b.e.c.rest.ClienteController - *** FINE delete cliente ***
+""2022-03-18 [http-nio-8080-exec-7] INFO  i.b.e.c.rest.ClienteController - *** findAll clienti ***
+""2022-03-18 [http-nio-8080-exec-8] INFO  i.b.e.c.rest.ClienteController - *** findById cliente ***
+""2022-03-18 [http-nio-8080-exec-10] INFO  i.b.e.c.rest.ClienteController - *** findById cliente ***
+""2022-03-18 [http-nio-8080-exec-9] INFO  i.b.e.c.rest.ClienteController - *** ordine ragione sociale clienti ***
+""2022-03-18 [http-nio-8080-exec-1] INFO  i.b.e.c.rest.ClienteController - *** ordine per sede legale, comune, provincia cliente ***
+""2022-03-18 [http-nio-8080-exec-2] INFO  i.b.e.c.rest.ClienteController - *** ordine per fatturato annuale cliente ***
+""2022-03-18 [http-nio-8080-exec-3] INFO  i.b.e.c.rest.ClienteController - *** ordine per data ultimo contatto cliente ***
+""2022-03-18 [http-nio-8080-exec-4] INFO  i.b.e.c.rest.ClienteController - *** ordine per data inserimento cliente ***
+""2022-03-18 [http-nio-8080-exec-5] INFO  i.b.e.c.rest.ClienteController - *** filtro cliente per porzione del nome della ragione sociale ***
+""2022-03-18 [http-nio-8080-exec-6] INFO  i.b.e.c.rest.ClienteController - *** filtro cliente per fatturato compreso tra ***
+""2022-03-18 [http-nio-8080-exec-7] INFO  i.b.e.c.rest.ClienteController - *** filtro cliente per fatturato minore di ***
+""2022-03-18 [http-nio-8080-exec-8] INFO  i.b.e.c.rest.ClienteController - *** filtro cliente per fatturato maggiore di ***
+""2022-03-18 [http-nio-8080-exec-10] INFO  i.b.e.c.rest.ClienteController - *** filtro cliente per data ultimo contatto compresa tra ***
+""2022-03-18 [http-nio-8080-exec-9] INFO  i.b.e.c.rest.ClienteController - *** filtro cliente per data inserimento minore o uguale di ***
+""2022-03-18 [http-nio-8080-exec-1] INFO  i.b.e.c.rest.ClienteController - *** filtro cliente per data inserimento maggiore o uguale di ***
+""2022-03-18 [http-nio-8080-exec-2] INFO  i.b.e.c.rest.ClienteController - *** filtro cliente per data inserimento maggiore o uguale di ***
+""2022-03-18 [http-nio-8080-exec-3] INFO  i.b.e.c.rest.ClienteController - *** INIZIO delete cliente ***
+""2022-03-18 [http-nio-8080-exec-3] INFO  i.b.e.c.rest.ClienteController - *** FINE delete cliente ***
+""2022-03-18 [http-nio-8080-exec-6] INFO  i.b.e.c.web.ClienteControllerWeb - *** findAllClienti ***
+""2022-03-18 [http-nio-8080-exec-8] INFO  i.b.e.c.web.ClienteControllerWeb - *** mostraFormAggiungiCliente ***
+""2022-03-18 [http-nio-8080-exec-3] INFO  i.b.e.c.web.ClienteControllerWeb - *** aggiungi cliente ***
+""2022-03-18 [http-nio-8080-exec-3] INFO  i.b.e.c.web.ClienteControllerWeb - *** cliente salvato ***
+""2022-03-18 [http-nio-8080-exec-3] INFO  i.b.e.c.web.ClienteControllerWeb - *** findAllClienti ***
+""2022-03-18 [http-nio-8080-exec-7] INFO  i.b.e.c.web.ClienteControllerWeb - *** findAllClienti ***
+""2022-03-18 [http-nio-8080-exec-8] INFO  i.b.e.c.web.ClienteControllerWeb - *** mostraFormAggiornaCliente ***
+""2022-03-18 [http-nio-8080-exec-1] INFO  i.b.e.c.web.ClienteControllerWeb - *** aggiorna cliente ***
+""2022-03-18 [http-nio-8080-exec-1] INFO  i.b.e.c.web.ClienteControllerWeb - *** cliente aggiornato ***
+""2022-03-18 [http-nio-8080-exec-1] INFO  i.b.e.c.web.ClienteControllerWeb - *** findAllClienti ***
+""2022-03-18 [http-nio-8080-exec-3] INFO  i.b.e.c.web.ClienteControllerWeb - *** findAllClienti ***
+""2022-03-18 [http-nio-8080-exec-7] INFO  i.b.e.c.web.FatturaControllerWeb - *** findAllFatture ***
+""2022-03-18 [http-nio-8080-exec-9] INFO  i.b.e.c.web.FatturaControllerWeb - *** mostraFormAggiungiFattura ***
+""2022-03-18 [http-nio-8080-exec-1] INFO  i.b.e.c.web.FatturaControllerWeb - *** findAllFatture ***
+""2022-03-18 [http-nio-8080-exec-3] INFO  i.b.e.c.web.FatturaControllerWeb - *** mostraFormAggiornaFattura ***
+""2022-03-18 [http-nio-8080-exec-5] INFO  i.b.e.c.web.FatturaControllerWeb - *** findAllFatture ***
+""2022-03-18 [http-nio-8080-exec-7] INFO  i.b.e.c.web.FatturaControllerWeb - *** findAllFatture ***
 "
